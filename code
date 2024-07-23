@@ -1,0 +1,418 @@
+##App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
+import AboutUs from './components/AboutUs';
+import Academics from './components/Academics';
+import Admissions from './components/Admissions';
+import Faculty from './components/Faculty';
+import Students from './components/Students';
+import Gallery from './components/Gallery';
+import ContactUs from './components/ContactUs';
+import Navbar from './components/Navbar';
+import './index.css'; // Import your CSS file
+
+const App = () => {
+  return (
+    <Router>
+      <div>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/academics" element={<Academics />} />
+          <Route path="/admissions" element={<Admissions />} />
+          <Route path="/faculty" element={<Faculty />} />
+          <Route path="/students" element={<Students />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/contact" element={<ContactUs />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+};
+
+export default App;
+##AboutUs.js
+import React from 'react';
+
+const AboutUs = () => {
+  return (
+    <div>
+      <h1>About Us</h1>
+      <p>Founded in 1985, Springdale Public School has been dedicated to providing quality education and holistic development to students.</p>
+      <h2>Vision</h2>
+      <p>To create a learning environment that fosters academic excellence, critical thinking, and ethical values.</p>
+      <h2>Mission</h2>
+      <p>To empower students with the knowledge, skills, and values needed to thrive in a dynamic world.</p>
+      <h2>Principal's Message</h2>
+      <p>At Springdale, we believe in nurturing the potential of every student and guiding them towards a successful future.</p>
+      <h2>Infrastructure and Facilities</h2>
+      <ul>
+        <li>State-of-the-art science and computer labs</li>
+        <li>Spacious and well-equipped classrooms</li>
+        <li>Library with a vast collection of books and digital resources</li>
+        <li>Sports facilities including a playground, gymnasium, and swimming pool</li>
+      </ul>
+    </div>
+  );
+};
+
+export default AboutUs;
+
+##Academics.js
+import React from 'react';
+
+const Academics = () => {
+  return (
+    <div>
+      <h1>Academics</h1>
+      <h2>Curriculum</h2>
+      <ul>
+        <li>Primary (Grades 1-5): English, Mathematics, Science, Social Studies, Art, Physical Education</li>
+        <li>Secondary (Grades 6-10): English, Mathematics, Science (Physics, Chemistry, Biology), Social Studies, Computer Science, Physical Education, Art</li>
+        <li>Senior Secondary (Grades 11-12):
+          <ul>
+            <li>Science Stream: Physics, Chemistry, Biology, Mathematics, Computer Science, English</li>
+            <li>Commerce Stream: Accountancy, Business Studies, Economics, Mathematics, English</li>
+          </ul>
+        </li>
+      </ul>
+      <h2>Teaching Methodologies</h2>
+      <p>We use a blend of traditional and modern teaching techniques to cater to different learning styles.</p>
+      <h2>Educational Resources</h2>
+      <p>Digital classrooms, interactive learning modules, and access to online educational platforms.</p>
+    </div>
+  );
+};
+
+export default Academics;
+##Admissions.js
+import React from 'react';
+
+const Admissions = () => {
+  return (
+    <div>
+      <h1>Admissions</h1>
+      <h2>Admission Process</h2>
+      <p>Admission forms are available for download. Submit the completed form along with required documents at the school office.</p>
+      <h2>Admission Criteria</h2>
+      <p>Admission is based on merit and availability of seats. Entrance tests may be conducted for certain grades.</p>
+      <h2>Important Dates</h2>
+      <ul>
+        <li>Admission Form Availability: March 1st</li>
+        <li>Last Date for Submission: March 31st</li>
+        <li>Entrance Test: April 15th</li>
+        <li>Announcement of Results: April 30th</li>
+      </ul>
+      <h2>Download Admission Form</h2>
+      <a href={require('../assets/admission_form.pdf')} download>Download Form</a>
+    </div>
+  );
+};
+
+export default Admissions;
+
+##ContactUs.js
+import React, { useState } from 'react';
+
+const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here (e.g., sending an email)
+    alert('Form submitted!');
+  };
+
+  return (
+    <div>
+      <h1>Contact Us</h1>
+      <p>Address: Springdale Public School, 123 Education Lane, Cityville, State, ZIP Code</p>
+      <p>Phone: +1 (123) 456-7890</p>
+      <p>Email: info@springdale.edu</p>
+      <h2>Contact Form</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="name">Name:</label>
+          <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />
+        </div>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+        </div>
+        <div>
+          <label htmlFor="message">Message:</label>
+          <textarea id="message" name="message" value={formData.message} onChange={handleChange} required></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+      <h2>Find Us on Google Maps</h2>
+      <iframe
+        title="Google Maps"
+        src="https://www.google.com/maps/embed/v1/place?q=Springdale%20Public%20School&key=YOUR_API_KEY"
+        width="600"
+        height="450"
+        allowFullScreen
+        loading="lazy"
+      ></iframe>
+    </div>
+  );
+};
+export default ContactUs;
+
+##Faculty.js
+import React from 'react';
+
+const Faculty = () => {
+  return (
+    <div>
+      <h1>Faculty</h1>
+      <h2>Profiles</h2>
+      <ul>
+        <li>
+          <h3>John Doe</h3>
+          <p>Principal, M.Ed, 20 years of experience in educational administration.</p>
+        </li>
+        <li>
+          <h3>Jane Smith</h3>
+          <p>Vice Principal, M.Sc. in Physics, 15 years of teaching experience.</p>
+        </li>
+        <li>
+          <h3>Emily Johnson</h3>
+          <p>English Teacher, M.A. in English, 10 years of teaching experience.</p>
+        </li>
+        <li>
+          <h3>Michael Brown</h3>
+          <p>Mathematics Teacher, M.Sc. in Mathematics, 8 years of teaching experience.</p>
+        </li>
+        <li>
+          <h3>Sophia Davis</h3>
+          <p>Science Teacher, M.Sc. in Chemistry, 12 years of teaching experience.</p>
+        </li>
+        <li>
+          <h3>David Wilson</h3>
+          <p>Computer Science Teacher, B.Tech in Computer Science, 5 years of teaching experience.</p>
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+export default Faculty;
+##Gallery.js
+import React from 'react';
+
+const Gallery = () => {
+  return (
+    <div>
+      <h1>Gallery</h1>
+      <h2>Photos</h2>
+      <div>
+        <img src={require('../assets/sports_day.jpg')} alt="Sports Day" style={{ width: '300px', margin: '10px' }} />
+        <img src={require('../assets/science_exhibition.jpg')} alt="Science Exhibition" style={{ width: '300px', margin: '10px' }} />
+        <img src={require('../assets/cultural_fest.jpg')} alt="Cultural Fest" style={{ width: '300px', margin: '10px' }} />
+        <img src={require('../assets/classroom.jpg')} alt="Classroom" style={{ width: '300px', margin: '10px' }} />
+        <img src={require('../assets/library.jpg')} alt="Library" style={{ width: '300px', margin: '10px' }} />
+      </div>
+      <h2>Videos</h2>
+      <div>
+        <video width="320" height="240" controls>
+          <source src={require('../assets/school_tour.mp4')} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <video width="320" height="240" controls>
+          <source src={require('../assets/annual_function.mp4')} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  );
+};
+
+export default Gallery;
+
+##HomePage.js
+import React from 'react';
+import { Carousel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import logo from '../assets/logo.png';
+
+const HomePage = () => {
+  return (
+    <div>
+      <header>
+        <img src={logo} alt="School Logo" style={{ width: '150px' }} />
+        <h1>Welcome to Springdale Public School</h1>
+      </header>
+      <Carousel>
+        <Carousel.Item>
+          <img src={require('../assets/sports_day.jpg')} alt="Sports Day" />
+          <Carousel.Caption>
+            <h3>Annual Sports Day - Celebrating Excellence in Sports</h3>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img src={require('../assets/science_exhibition.jpg')} alt="Science Exhibition" />
+          <Carousel.Caption>
+            <h3>Science Exhibition - Showcasing Student Innovations</h3>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img src={require('../assets/cultural_fest.jpg')} alt="Cultural Fest" />
+          <Carousel.Caption>
+            <h3>Cultural Fest - Embracing Diversity and Creativity</h3>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+      <p>Welcome to Springdale Public School, where we nurture young minds for a brighter future.</p>
+      <ul>
+        <li><Link to="/about">About Us</Link></li>
+        <li><Link to="/academics">Academics</Link></li>
+        <li><Link to="/admissions">Admissions</Link></li>
+        <li><Link to="/faculty">Faculty</Link></li>
+        <li><Link to="/students">Students</Link></li>
+        <li><Link to="/gallery">Gallery</Link></li>
+        <li><Link to="/contact">Contact Us</Link></li>
+      </ul>
+    </div>
+  );
+};
+
+export default HomePage;
+##index.css
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header img {
+    max-width: 100px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  ul li {
+    padding: 5px 0;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: #0056b3;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+##Students.js
+import React from 'react';
+
+const Students = () => {
+  return (
+    <div>
+      <h1>Students</h1>
+      <h2>Life at Springdale</h2>
+      <h3>Extracurricular Activities</h3>
+      <ul>
+        <li>Music</li>
+        <li>Dance</li>
+        <li>Drama</li>
+        <li>Art</li>
+        <li>Sports</li>
+        <li>Robotics</li>
+        <li>Debate Club</li>
+        <li>Science Club</li>
+      </ul>
+      <h3>Clubs and Societies</h3>
+      <ul>
+        <li>Literary Society</li>
+        <li>Environmental Club</li>
+        <li>Astronomy Club</li>
+        <li>Coding Club</li>
+      </ul>
+      <h3>Achievements</h3>
+      <ul>
+        <li>John Smith - National Level Math Olympiad Winner</li>
+        <li>Sarah Lee - Gold Medalist in State Swimming Championship</li>
+        <li>Tech Innovators Club - Winners of Inter-School Robotics Competition</li>
+      </ul>
+      <h3>Student Council</h3>
+      <ul>
+        <li>President: Amy Parker, Grade 12</li>
+        <li>Vice President: Rajiv Mehta, Grade 11</li>
+        <li>Secretary: Lisa Wong, Grade 10</li>
+      </ul>
+    </div>
+  );
+};
+
+export default Students;
+
+##index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+reportWebVitals();
+
+
